@@ -1,7 +1,7 @@
 .DS_Store
 .env
 .idea
-.furafila
+.fura
 *.sqlite3
 *.pyc
 __pycache__
