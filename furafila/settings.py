@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'furafila.core',
     # 'furafila.accesspoint',
     'furafila.screening',
+    'furafila.tickets',
 ]
 
 MIDDLEWARE_CLASSES = [

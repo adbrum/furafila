@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>SENHA Detail</h1>
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ ticket.non_field_errors }}
+        <div class="form-row label-block input-text">
+            <label for="{{ ticket.name.id_for_label }}">{{ ticket.name.label }}</label>
+            {{ ticket.name.errors }}
+            {{ ticket.name }}
+        </div>
+    </form>
+</body>
+</html>

@@ -20,5 +20,6 @@ from furafila.core.views import home
 urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'triagem/', include('furafila.screening.urls', namespace='screening')),
+    url(r'senha/', include('furafila.tickets.urls', namespace='ticket')),
     url(r'^admin/', admin.site.urls),
 ]
