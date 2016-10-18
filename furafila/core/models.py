@@ -6,8 +6,8 @@ from django.db import models
 class Ticket(models.Model):  # Senha
     service = models.ForeignKey('Service', verbose_name='serviço')
     ticket = models.CharField('senha', max_length=4)
-    created_at = models.DateTimeField('criado em', auto_now_add=True)
-    complete_use = models.DateTimeField('concluída', null=True)
+    created_at = models.DateTimeField('emitida em', auto_now_add=True)
+    complete_use = models.DateTimeField('concluída', blank=True)
 
     class Meta:
         verbose_name_plural = 'senha'

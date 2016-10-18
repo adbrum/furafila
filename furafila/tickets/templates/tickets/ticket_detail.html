@@ -6,14 +6,18 @@
 </head>
 <body>
     <h1>SENHA Detail</h1>
-    <form action="." method="post">
-        {% csrf_token %}
-        {{ ticket.non_field_errors }}
+        {{ form.non_field_errors }}
         <div class="form-row label-block input-text">
-            <label for="{{ ticket.name.id_for_label }}">{{ ticket.name.label }}</label>
-            {{ ticket.name.errors }}
-            {{ ticket.name }}
+            <label>Serviço:</label>
+            {{ form.service }}
         </div>
-    </form>
+        <div class="form-row label-block input-text">
+            <label>Senha:</label>
+            {{ form.ticket }}
+        </div>
+        <div class="form-row label-block input-text">
+            <label>Data emissão:</label>
+            {{ form.created_at }}
+        </div>
 </body>
 </html>

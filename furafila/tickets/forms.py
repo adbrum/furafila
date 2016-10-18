@@ -9,7 +9,7 @@ from django import forms
 from furafila.core.models import Ticket
 
 
-class TicketForm(forms.Form):
+class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
-        fields = ['service', 'ticket']
+        fields = ['service']

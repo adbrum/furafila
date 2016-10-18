@@ -32,22 +32,18 @@ def create(request):
         return render(request, 'tickets/ticket_form.html',
                       {'form': form})
 
-    service = Service.objects.get(name='Atendimento Geral')
+    service = Service.objects.get(pk=request.POST.get('service'))
+    # service = Service.objects.get(name='Atendimento Geral')
 
     pos = Ticket.objects.filter(service_id=service.pk, created_at__date=datetime.now().date()).last()
 
-    # print('XXXXXXXXXXXXXXX: ', pos.ticket[1:])
+    try:
+        new_ticket = counter(service.prefixo, pos.ticket[1:])
+    except:
+        new_ticket = counter(service.prefixo, 0)
 
-    new_ticket = counter(service.prefixo, pos.ticket[1:])
-
-    # ticket = form.save()  # Quando é utilizado o forms.ModelForm
     ticket = Ticket.objects.create(service_id=service.pk,
-                                   ticket=new_ticket)# Quando é utilizado o forms.Form no form.
-
-    """Caso de sucesso!"""
-
-    # # Success feedback
-    # messages.success(request, 'Inscrição realizada com sucesso!')
+                                   ticket=new_ticket)  # Quando é utilizado o forms.Form no form.
 
     return HttpResponseRedirect(r('ticket:detail', ticket.pk))
 
@@ -58,10 +54,10 @@ def detail(request, pk):
     except Ticket.DoesNotExist:  # Levanta o erro se não existir na base de dados.
         raise Http404
 
-    return render(request, 'tickets/ticket_detail.html', {'ticket': ticket})
+    return render(request, 'tickets/ticket_detail.html', {'form': ticket})
 
 
-def counter(prefixo, pos):
+def counter(prefixo, pos=0):
     pos = int(pos)
     pos += 1
     return prefixo + str(pos)

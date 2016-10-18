@@ -19,11 +19,23 @@
     <form action="." method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
+{#        <div class="form-row label-block input-text">#}
+{#            <label for="{{ form.ticket.id_for_label }}">{{ form.ticket.label }}</label>#}
+{#            {{ form.ticket.errors }}#}
+{#            {{ form.ticket }}#}
+{#        </div>#}
         <div class="form-row label-block input-text">
-            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
-            {{ form.name.errors }}
-            {{ form.name }}
+            <label for="{{ form.service.id_for_label }}">{{ form.service.label }}</label>
+            {{ form.service.errors }}
+            {{ form.service }}
         </div>
+
+{#        <div class="form-group form-animate-text" style="margin-top:40px !important;">#}
+{#            <input name="service" type="text" class="form-text" autocomplete="off" required autofocus>#}
+{#            <span class="bar"></span>#}
+{#            <label>Serviço</label>#}
+{#        </div>#}
+
         <p class="btn-row"><input type="submit" value="Enviar!"/></p>
     </form>
 </body>
