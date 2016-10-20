@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'furafila.core',
-    # 'furafila.accesspoint',
+    'furafila.accesspoint',
     'furafila.screening',
     'furafila.tickets',
+    'furafila.groups',
 ]
 
 MIDDLEWARE_CLASSES = [

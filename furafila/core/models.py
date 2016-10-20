@@ -33,6 +33,33 @@ class Service(models.Model):  # Serviços
         return self.name
 
 
+class WorkGroup(models.Model):
+    name = models.CharField('nome', max_length=100)
+    description = models.TextField('descrição', max_length=255)
+
+    class Meta:
+        verbose_name_plural = 'grupos'
+        verbose_name = 'grupo'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+
+class AccessPoint(models.Model):  # Ponto de Acesso
+    group = models.ForeignKey('WorkGroup', verbose_name='grupo')
+    name = models.CharField('nome', max_length=100)
+    description = models.TextField('descrição', max_length=255)
+
+    class Meta:
+        verbose_name_plural = 'pontos de acesso'
+        verbose_name = 'ponto de acesso'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+
 # class Counter(models.Model):  # Contador
 #     ticket = models.ForeignKey('Ticket', verbose_name='senha')
 #     prefixo = models.ForeignKey('Service',  verbose_name='prefixo')
@@ -69,17 +96,7 @@ class Service(models.Model):  # Serviços
 #         return self.name
 #
 #
-# class AccessPoint(models.Model):  # Ponto de Acesso
-#     name = models.CharField('Nome', max_length=100)
-#     quantity = models.IntegerField()
-#
-#     class Meta:
-#         verbose_name_plural = 'Pontos de acesso'
-#         verbose_name = 'Ponto de acesso'
-#         ordering = ('name',)
-#
-#     def __str__(self):
-#         return self.name
+
 #
 #
 # class Priority(models.Model):  # Prioridade
@@ -98,9 +115,7 @@ class Service(models.Model):  # Serviços
 
 
 
-# class Group(models.Model):
-#     name = models.CharField('Nome', max_length=100)
-#     description = models.TextField('Descrição', max_length=255)
+
 
 
 # class HistoryService(models.Model):
